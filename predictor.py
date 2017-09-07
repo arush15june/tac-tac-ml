@@ -1,7 +1,7 @@
 import pandas as pd 
 import numpy as np
 from sklearn import linear_model
-from sklearn import Pipeline
+from sklearn.pipeline import Pipeline
 from sklearn import preprocessing
 from sklearn.externals import joblib
 
@@ -41,6 +41,9 @@ class TacPredictor:
     self.dataset.to_csv(datafile)
   
   def fit():
+    # Shuffle the dataset
+    dataset = dataset.sample(frac=1).reset_index(drop=True)
+    
     """
       Extract Feature Vectors X and Output Vector y from 
       Raw Dateset;
@@ -49,6 +52,7 @@ class TacPredictor:
     """
     dataset_DF_X = self.dataset[features[:-1]]
     dataset_DF_Y = self.dataset[features[-1:]]
+
 
     """
       Split dataset into 
