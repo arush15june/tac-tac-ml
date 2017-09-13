@@ -1,4 +1,4 @@
-from flask import Flask, flash, redirect, render_template, request, session, url_for
+from flask import Flask, flash, redirect, render_template, request, url_for
 import pandas as pd
 from predictor import TacPredictor
 import csv
@@ -11,19 +11,32 @@ datasetCSV = "tactacset.csv"
 # App Config
 
 app = Flask(__name__)
-app.config.from_object('config')
+app.config['DEBUG'] = True
 
 TacPlayer = TacPredictor(featurelist,datasetCSV)
 
-@app.route('/')
+# Prevent caching
+@app.after_request
+def add_header(r):
+  """
+  Add headers to both force latest IE rendering engine or Chrome Frame,
+  and also to cache the rendered page for 10 minutes.
+  """
+  r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+  r.headers["Pragma"] = "no-cache"
+  r.headers["Expires"] = "0"
+  r.headers['Cache-Control'] = 'public, max-age=0'
+  return r
+
+@app.route('/',methods=["GET"])
 def home():
-  return render_template('templates/board.html')
+  return render_template('board.html')
 
 @app.route('/add',methods=["GET","POST"])
 def addDataPoint():
   if request.method == "GET":
     # Can manually add datapoint(s) from here
-    return render_template("templates/add.html")
+    return render_template("add.html")
   elif request.method == "POST":
     # Get the board data sent as a json in the format :
     # { '1' : 0, '2' : -1, '3' : 1,.....,'9' : '0','move' : '7' }

@@ -5,30 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta charset = "utf-8">
   <title>{% block title %}{% endblock %}</title>
-  <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+  <link rel="stylesheet" type="text/css" href="static/css/main.css">
   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
-  <link rel="manifest" href="/static/js/manifest.json">
-  <script src="/static/js/jquery-3.0.0.min.js"></script>
-  <script src="/static/js/main.js"></script>
+  <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+  <link rel="manifest" href="static/js/manifest.json">
+  <script src="static/js/jquery-3.0.0.min.js"></script>
+  <script src="static/js/main.js"></script>
 </head>
 
 <body>
 
 	<div class = "jumbotron">
 		<div class = "container text-responsive">
-			<span class = "heading">Tac-Tac ML</span>
+			<h1 class = "heading">Tac-Tac ML</h1>
 		</div>
 	</div>
 
   {% block body %}
   {% endblock %}
-
-  <div class = 'row footer' id = "footer">
-  {% block footer %}
-  {% endblock %}
-  </div>
-
 </body>
 
 </html>

@@ -22,14 +22,15 @@ class TacPredictor:
 
   """
 
-
+  dataset = pd.DataFrame([])
+  dataN = len(dataset)
+  
   model = Pipeline(steps=[('logreg',linear_model.LogisticRegression())])
 
   def __init__(self,features,datafile):
     self.datafile = datafile
-    self.dataset = pd.DataFrame(np.array([]),columns=features)
+    dataset = pd.DataFrame([],columns=features)
     self.featureN = len(features)
-    self.dataN = len(dataset)
     
   def addPoint(row):
     self.dataset.append(row)
