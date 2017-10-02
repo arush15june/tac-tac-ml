@@ -8,7 +8,7 @@
 ____- Record the Current Board
 ____- Record the PLAYER's move
 ____- Generate training sample JSON
-____- POST new training sample to /add    
+____- POST new training sample to [/add]    
 ____- Request a move from the server 
 - Repeat until someone wins
 - Display winner and reset option
